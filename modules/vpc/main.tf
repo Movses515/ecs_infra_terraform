@@ -12,7 +12,7 @@ module "vpc" {
   enable_nat_gateway = true
 
   tags = {
-    Terraform = "true"
+    Terraform = "TRUE"
     Environment = terraform.workspace
   }
 }
