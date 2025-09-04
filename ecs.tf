@@ -6,7 +6,14 @@ module "ecs" {
   count = var.desired_count
 
   services = {
-    subnet_ids = var.private_subnets
+    simple-ecs-service = {
+      subnet_ids = module.vpc.private_subnets
+      launch_type = "FARGATE"
+      security_group_ids = [aws_security_group.ecs_security_group.id]
+      container_definitions = {
+
+      }
+    }
   }
 
   tags = {
