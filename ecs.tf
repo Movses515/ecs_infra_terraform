@@ -12,7 +12,6 @@ module "ecs" {
       desired_count = var.desired_count
       container_definitions = {
         cpu                = 256
-        memory             = 512
       }
     }
   }
