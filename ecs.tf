@@ -41,4 +41,6 @@ module "ecs" {
     Terraform   = "TRUE"
     Environment = terraform.workspace
   }
+
+  depends_on = [aws_alb_listener.http_listener]
 }
