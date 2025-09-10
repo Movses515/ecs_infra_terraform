@@ -10,6 +10,7 @@ module "ecs" {
       launch_type        = "FARGATE"
       security_group_ids = [aws_security_group.ecs_security_group.id]
       desired_count      = var.desired_count
+      create_security_group = false
       container_definitions = {
         ecs-sample = {
           cpu       = 512
