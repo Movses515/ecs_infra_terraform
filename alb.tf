@@ -11,6 +11,8 @@ resource "aws_alb_target_group" "ecs_target_group" {
   port = 80
   protocol = "HTTP"
   vpc_id = module.vpc.vpc_id
+  target_type = "ip"
+
   health_check {
     path = "/"
     interval = 30
