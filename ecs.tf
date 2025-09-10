@@ -6,16 +6,30 @@ module "ecs" {
 
   services = {
     simple-ecs-service = {
-      subnet_ids = module.vpc.private_subnets
-      launch_type = "FARGATE"
+      subnet_ids         = module.vpc.private_subnets
+      launch_type        = "FARGATE"
       security_group_ids = [aws_security_group.ecs_security_group.id]
-      desired_count = var.desired_count
-      container_definitions = {}
+      desired_count      = var.desired_count
+      container_definitions = {
+        ecs-sample = {
+          cpu       = 512
+          memory    = 1024
+          essential = true
+          image     = "${var.container_image}:${var.image_version}"
+          portMappings = [
+            {
+              name          = "ecs-sample-port-mappings"
+              containerPort = var.container_port
+              protocol      = "tcp"
+            }
+          ]
+        }
+      }
     }
   }
 
   tags = {
-    Terraform = "TRUE"
+    Terraform   = "TRUE"
     Environment = terraform.workspace
   }
 }
