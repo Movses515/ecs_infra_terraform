@@ -27,12 +27,13 @@ module "ecs" {
           ]
         }
       }
-    }
-
-    load_balancer = {
-      container_port = 80
-      container_name = "ecs-sample"
-      target_group_arn = aws_alb_target_group.ecs_target_group.arn
+      load_balancer = {
+        service = {
+          container_port = 80
+          container_name = "ecs-sample"
+          target_group_arn = aws_alb_target_group.ecs_target_group.arn
+        }
+      }
     }
   }
 
