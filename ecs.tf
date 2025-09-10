@@ -17,6 +17,7 @@ module "ecs" {
           memory    = 1024
           essential = true
           image     = "${var.container_image}:${var.image_version}"
+          readonlyRootFilesystem = false
           portMappings = [
             {
               name          = "ecs-sample-port-mappings"
