@@ -1,5 +1,6 @@
 resource "aws_security_group" "ecs_security_group" {
   name = "ecs-security-group"
+  vpc_id = module.vpc.vpc_id
 
   ingress {
     from_port = 80
