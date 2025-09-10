@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "desired_count" {
   type    = number
-  default = 1
+  default = 10
 }
 
 variable "container_image" {
